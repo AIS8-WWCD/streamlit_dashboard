@@ -175,31 +175,31 @@ def plot_item():
 
         st.dataframe(AA, use_container_width=True)
         fig, ax = plt.subplots()
-        sns.barplot(data=A, x=team_name, y='회복템', palette='YlOrBr', ax=ax)
+        sns.barplot(data=A, x=team_name, y='회복템', palette='YlOrBr')
         st.pyplot(fig)
         
         st.dataframe(BB, use_container_width=True)
         fig, ax = plt.subplots()
-        sns.barplot(data=B, x=team_name, y='투척 무기', palette='YlOrBr', ax=ax)
+        sns.barplot(data=B, x=team_name, y='투척 무기', palette='YlOrBr')
         st.pyplot(fig)
     elif choice == '총 사용한 아이템':
         st.dataframe(CC, use_container_width=True)
         fig, ax = plt.subplots()
-        sns.barplot(data=C, x=team_name, y='사용한 회복템', palette='YlOrBr', ax=ax)
+        sns.barplot(data=C, x=team_name, y='사용한 회복템', palette='YlOrBr')
         st.pyplot(fig)
 
         st.dataframe(DD, use_container_width=True)
         fig, ax = plt.subplots()
-        sns.barplot(data=D, x=team_name, y='사용한 투척 무기', palette='YlOrBr', ax=ax)
+        sns.barplot(data=D, x=team_name, y='사용한 투척 무기', palette='YlOrBr')
         st.pyplot(fig)
     else:
         st.dataframe(EE, use_container_width=True)
         fig, ax = plt.subplots()
-        sns.barplot(data=E, x=team_name, y='회복템 사용률', palette='YlOrBr', ax=ax)
+        sns.barplot(data=E, x=team_name, y='회복템 사용률', palette='YlOrBr')
         st.pyplot(fig)
 
         st.dataframe(FF, use_container_width=True)
         fig, ax = plt.subplots()
-        sns.barplot(data=F, x=team_name, y='투척 무기 사용률', palette='YlOrBr', ax=ax)
+        sns.barplot(data=F, x=team_name, y='투척 무기 사용률', palette='YlOrBr')
         st.pyplot(fig)
 plot_item()
