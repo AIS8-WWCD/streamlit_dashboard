@@ -119,43 +119,12 @@ def plot_items_stats():
 
 plot_items_stats()
     
-# # 데이터프레임 생성 및 전처리
-# aa[['team','column_name_1']] = aa['character_name'].str.split('_', expand=True)
-# aa = aa.drop(['column_name_1'], axis=1)
-# aa = aa.groupby('team').sum()
-# aa = aa.T
-# aa = aa.reset_index()
-# bb[['team','column_name_1']] = bb['character_name'].str.split('_', expand=True)
-# bb = bb.drop(['column_name_1'], axis=1)
-# bb = bb.groupby('team').sum()
-# bb = bb.T
-# bb = bb.reset_index()
-# cc[['team','column_name_1']] = cc['attacker_name'].str.split('_', expand=True)
-# cc = cc.drop(['column_name_1'], axis=1)
-# cc = cc.groupby('team').sum()
-# cc = cc.T
-# cc = cc.reset_index()
-# aab = aa.iloc[:6]
-# aac = aa.iloc[6:]
-# aab = aab.rename(columns={'index': '회복템'})
-# aac = aac.rename(columns={'index': '투척 무기'})
-# bb = bb.rename(columns={'index': '사용한 회복템'})
-# cc = cc.rename(columns={'index': '사용한 투척 무기'})
-# aac = aac.reset_index(drop=True)
-# aab = aab.iloc[1:,:]
-# aac = aac.iloc[1:,:]
-# e = pd.concat([aab.iloc[:,:1],bb/aab * 100], axis=1).iloc[:,:-2]
-# f = pd.concat([aac.iloc[:,:1],cc/aac * 100], axis=1).iloc[:,:-2]
-# e = e.rename(columns = {"회복템" : "회복템 사용률"})
-# f = f.rename(columns = {"투척 무기" : "투척 무기 사용률"})
-
 # 데이터프레임 생성 및 전처리
 aa[['team','column_name_1']] = aa['character_name'].str.split('_', expand=True)
 aa = aa.drop(['column_name_1'], axis=1)
 aa = aa.groupby('team').sum()
 aa = aa.T
 aa = aa.reset_index()
-aa['index'] = aa['index'].astype(int)  # 행 이름을 정수형으로 변경
 bb[['team','column_name_1']] = bb['character_name'].str.split('_', expand=True)
 bb = bb.drop(['column_name_1'], axis=1)
 bb = bb.groupby('team').sum()
@@ -166,22 +135,15 @@ cc = cc.drop(['column_name_1'], axis=1)
 cc = cc.groupby('team').sum()
 cc = cc.T
 cc = cc.reset_index()
-
 aab = aa.iloc[:6]
 aac = aa.iloc[6:]
-
 aab = aab.rename(columns={'index': '회복템'})
 aac = aac.rename(columns={'index': '투척 무기'})
 bb = bb.rename(columns={'index': '사용한 회복템'})
 cc = cc.rename(columns={'index': '사용한 투척 무기'})
 aac = aac.reset_index(drop=True)
-
-
-# 행 이름을 정수형으로 변경하여 계산
-aa = aa.set_index('index').astype(float)
-bb = bb.set_index('index').astype(float)
-cc = cc.set_index('index').astype(float)
-
+aab = aab.iloc[1:,:]
+aac = aac.iloc[1:,:]
 e = pd.concat([aab.iloc[:,:1],bb/aab * 100], axis=1).iloc[:,:-2]
 f = pd.concat([aac.iloc[:,:1],cc/aac * 100], axis=1).iloc[:,:-2]
 e = e.rename(columns = {"회복템" : "회복템 사용률"})
