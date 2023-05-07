@@ -155,10 +155,10 @@ team_name = st.selectbox("팀 선택", ('17', '4AM', 'ACE', 'CES', 'DAY', 'DNW',
 
 choice = st.selectbox("보고 싶은 그래프", ('총 얻은 아이템', '총 사용한 아이템'))
 # , '아이템 사용률'
-A = aab.sort_values(team_name, ascending=False)
-B = aac.sort_values(team_name, ascending=False)
-C = bb.sort_values(team_name, ascending=False)
-D = cc.sort_values(team_name, ascending=False)
+A = aab#.sort_values(team_name, ascending=False)
+B = aac#.sort_values(team_name, ascending=False)
+C = bb#.sort_values(team_name, ascending=False)
+D = cc#.sort_values(team_name, ascending=False)
 # E = e.sort_values(team_name, ascending=False)
 # F = f.sort_values(team_name, ascending=False)
 AA = A[["회복템",team_name]]
