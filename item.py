@@ -162,12 +162,12 @@ C = bb#.sort_values(team_name, ascending=False)
 D = cc#.sort_values(team_name, ascending=False)
 E = e#.sort_values(team_name, ascending=False)
 F = f#.sort_values(team_name, ascending=False)
-# AA = A[["회복템",team_name]]
-# BB = B[["투척 무기",team_name]]
-# CC = C[["사용한 회복템",team_name]]
-# DD = D[["사용한 투척 무기",team_name]]
-# EE = E[["회복템 사용률",team_name]]
-# FF = F[["투척 무기 사용률",team_name]]
+AA = A[["회복템",team_name]]
+BB = B[["투척 무기",team_name]]
+CC = C[["사용한 회복템",team_name]]
+DD = D[["사용한 투척 무기",team_name]]
+EE = E[["회복템 사용률",team_name]]
+FF = F[["투척 무기 사용률",team_name]]
 def plot_item():
     if choice =='총 얻은 아이템':
     # 각 차트를 시각화하고 웹 앱으로 만들기
