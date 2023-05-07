@@ -175,8 +175,7 @@ aac = aac.rename(columns={'index': '투척 무기'})
 bb = bb.rename(columns={'index': '사용한 회복템'})
 cc = cc.rename(columns={'index': '사용한 투척 무기'})
 aac = aac.reset_index(drop=True)
-aab = aab.iloc[1:,:]
-aac = aac.iloc[1:,:]
+
 
 # 행 이름을 정수형으로 변경하여 계산
 aa = aa.set_index('index').astype(float)
