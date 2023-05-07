@@ -4,7 +4,6 @@ import seaborn as sns
 import matplotlib.ticker as mtick
 import streamlit as st
 import koreanize_matplotlib
-%config InlineBackend.figure_format = 'retina'
 
 # 데이터 불러오기
 a = pd.read_csv('https://raw.githubusercontent.com/AIS8-WWCD/streamlit_dashboard/main/heal_boost_data.csv')
