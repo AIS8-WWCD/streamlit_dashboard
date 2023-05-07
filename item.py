@@ -143,10 +143,10 @@ aac = aac.rename(columns={'index': '투척 무기'})
 bb = bb.rename(columns={'index': '사용한 회복템'})
 cc = cc.rename(columns={'index': '사용한 투척 무기'})
 aac = aac.reset_index(drop=True)
-e = pd.concat([aab.iloc[:,:1],bb/aab * 100], axis=1).iloc[:,:-2]
-f = pd.concat([aac.iloc[:,:1],cc/aac * 100], axis=1).iloc[:,:-2]
-e = e.rename(columns = {"회복템" : "회복템 사용률"})
-f = f.rename(columns = {"투척 무기" : "투척 무기 사용률"})
+# e = pd.concat([aab.iloc[:,:1],bb/aab * 100], axis=1).iloc[:,:-2]
+# f = pd.concat([aac.iloc[:,:1],cc/aac * 100], axis=1).iloc[:,:-2]
+# e = e.rename(columns = {"회복템" : "회복템 사용률"})
+# f = f.rename(columns = {"투척 무기" : "투척 무기 사용률"})
 
 # 팀 선택
 team_name = st.selectbox("팀 선택", ('17', '4AM', 'ACE', 'CES', 'DAY', 'DNW', 'EXO', 'FaZe',
@@ -159,14 +159,14 @@ A = aab.sort_values(team_name, ascending=False)
 B = aac.sort_values(team_name, ascending=False)
 C = bb.sort_values(team_name, ascending=False)
 D = cc.sort_values(team_name, ascending=False)
-E = e.sort_values(team_name, ascending=False)
-F = f.sort_values(team_name, ascending=False)
+# E = e.sort_values(team_name, ascending=False)
+# F = f.sort_values(team_name, ascending=False)
 AA = A[["회복템",team_name]]
 BB = B[["투척 무기",team_name]]
 CC = C[["사용한 회복템",team_name]]
 DD = D[["사용한 투척 무기",team_name]]
-EE = E[["회복템 사용률",team_name]]
-FF = F[["투척 무기 사용률",team_name]]
+# EE = E[["회복템 사용률",team_name]]
+# FF = F[["투척 무기 사용률",team_name]]
 def plot_item():
     if choice =='총 얻은 아이템':
     # 각 차트를 시각화하고 웹 앱으로 만들기
@@ -191,13 +191,13 @@ def plot_item():
         sns.barplot(data=D, x=team_name, y='사용한 투척 무기', palette='YlOrBr', ax=ax)
         st.pyplot(fig)
     else:
-        st.dataframe(EE, use_container_width=True)
-        fig, ax = plt.subplots()
-        sns.barplot(data=E, x=team_name, y='회복템 사용률', palette='YlOrBr', ax=ax)
-        st.pyplot(fig)
+#         st.dataframe(EE, use_container_width=True)
+#         fig, ax = plt.subplots()
+#         sns.barplot(data=E, x=team_name, y='회복템 사용률', palette='YlOrBr', ax=ax)
+#         st.pyplot(fig)
 
-        st.dataframe(FF, use_container_width=True)
-        fig, ax = plt.subplots()
-        sns.barplot(data=F, x=team_name, y='투척 무기 사용률', palette='YlOrBr', ax=ax)
-        st.pyplot(fig)
+#         st.dataframe(FF, use_container_width=True)
+#         fig, ax = plt.subplots()
+#         sns.barplot(data=F, x=team_name, y='투척 무기 사용률', palette='YlOrBr', ax=ax)
+#         st.pyplot(fig)
 plot_item()
