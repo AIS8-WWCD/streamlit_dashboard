@@ -9,7 +9,6 @@ import koreanize_matplotlib
 a = pd.read_csv('https://raw.githubusercontent.com/AIS8-WWCD/streamlit_dashboard/main/heal_boost_data.csv')
 b = pd.read_csv('https://raw.githubusercontent.com/AIS8-WWCD/streamlit_dashboard/main/heal.csv')
 c = pd.read_csv('https://raw.githubusercontent.com/AIS8-WWCD/streamlit_dashboard/main/Throwable_data.csv')
-
 # match_id 컬럼 제거
 a = a.drop("match_id", axis=1)
 b = b.drop("match_id", axis=1)
