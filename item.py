@@ -143,10 +143,14 @@ aac = aac.rename(columns={'index': '투척 무기'})
 bb = bb.rename(columns={'index': '사용한 회복템'})
 cc = cc.rename(columns={'index': '사용한 투척 무기'})
 aac = aac.reset_index(drop=True)
-e = pd.concat([aab.iloc[:,:1],bb.iloc[:,1:]/aab.iloc[:,1:] * 100], axis=1)
-f = pd.concat([aac.iloc[:,:1],cc.iloc[:,1:]/aac.iloc[:,1:] * 100], axis=1)
-e = e.rename(columns = {"회복템" : "회복템 사용률"})
-f = f.rename(columns = {"투척 무기" : "투척 무기 사용률"})
+l = bb.iloc[:,1:]
+m = cc.iloc[:,1:]
+j = aab.iloc[:,1:]
+k = aac.iloc[:,1:]
+g = aab.iloc[:,:1]
+h = aac.iloc[:,:1]
+e = pd.concat([g,l/j * 100], axis=1)
+f = pd.concat([h,m/k * 100], axis=1)
 
 # 팀 선택
 team_name = st.selectbox("팀 선택", ('17', '4AM', 'ACE', 'CES', 'DAY', 'DNW', 'EXO', 'FaZe',
