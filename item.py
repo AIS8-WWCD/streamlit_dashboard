@@ -6,9 +6,9 @@ import streamlit as st
 import koreanize_matplotlib
 
 # 데이터 불러오기
-a = pd.read_csv('heal_boost_data.csv')
-b = pd.read_csv('heal.csv')
-c = pd.read_csv('Throwable_data.csv')
+a = pd.read_csv('https://raw.githubusercontent.com/AIS8-WWCD/streamlit_dashboard/main/heal_boost_data.csv')
+b = pd.read_csv('https://raw.githubusercontent.com/AIS8-WWCD/streamlit_dashboard/main/heal.csv')
+c = pd.read_csv('https://raw.githubusercontent.com/AIS8-WWCD/streamlit_dashboard/main/Throwable_data.csv')
 # C:\Users\rlarj\OneDrive\문서\GitHub\final_project\streamlit\heal_boost_data.csv
 # match_id 컬럼 제거
 a = a.drop("match_id", axis=1)
