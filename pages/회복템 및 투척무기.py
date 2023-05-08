@@ -162,7 +162,7 @@ st.markdown(' ')
 st.markdown(' ')
 st.markdown(' ')
 # 팀 선택
-team_name = st.selectbox("원하시는 팀을 선택해 주세여", ('선택해 주세요','17', '4AM', 'ACE', 'CES', 'DAY', 'DNW', 'EXO', 'FaZe',
+team_name = st.selectbox("원하시는 팀을 선택해 주세여", ('17', '4AM', 'ACE', 'CES', 'DAY', 'DNW', 'EXO', 'FaZe',
         'GBL', 'GEN', 'GEX', 'HOWL', 'III', 'LG', 'NAVI', 'NH', 'PLM', 'PTG',
         'PeRo', 'SQ', 'SST', 'STK', 'TWIS', 'Tian'))
 st.markdown(' ')
