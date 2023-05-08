@@ -145,6 +145,7 @@ aac = aac.reset_index(drop=True)
 aab = aab.iloc[1:,:]
 bb = bb.iloc[1:,:]
 cc = cc.iloc[1:,:]
+cc = cc.reindex([0,1,3,2])
 cc = cc.reset_index(drop=True)
 st.dataframe(aab, use_container_width=True)
 st.dataframe(aac, use_container_width=True)
