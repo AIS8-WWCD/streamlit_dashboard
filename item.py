@@ -37,10 +37,6 @@ df_Magazine = pd.read_csv("https://raw.githubusercontent.com/AIS8-WWCD/streamlit
 df_move_distance_mean = pd.read_csv("https://raw.githubusercontent.com/AIS8-WWCD/streamlit_dashboard/main/pages/df_move_distance_mean.csv")
 df_survive_mean = pd.read_csv("https://raw.githubusercontent.com/AIS8-WWCD/streamlit_dashboard/main/pages/df_survive_mean.csv")
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 654aa9fccb3502d0cb1f8d1a10aa213e0fc93f87
 translation_dict = {
     'Item_Weapon_Sawnoff_C': '소드오프',
     'Item_Weapon_NagantM1895_C': '리볼버',
@@ -127,11 +123,6 @@ df_Lower = df_Lower.rename(columns = {"index" : "손잡이","itemId":"개수"})
 df_Magazine = df_Magazine.rename(columns = {"index" : "탄창","itemId":"개수"})
 
 
-<<<<<<< HEAD
-=======
->>>>>>> 975d3162eef36eae3fe20ffa9d7a9125d14bc723
-=======
->>>>>>> 654aa9fccb3502d0cb1f8d1a10aa213e0fc93f87
 # 선택 박스
 pick = st.selectbox(
     ' 공식 경기에서 선수들이 가장 많이 사용했던 **이것**은? 원하시는 선택지를 골라주세요! 추가로 이에 관련된 무기 정보들 더 넣기',
