@@ -156,12 +156,15 @@ e = pd.concat([aab.iloc[:,:1],bb/aab * 100], axis=1).iloc[:,:-2]
 f = pd.concat([aac.iloc[:,:1],cc/aac * 100], axis=1).iloc[:,:-2]
 e = e.rename(columns = {"회복템" : "회복템 사용률"})
 f = f.rename(columns = {"투척 무기" : "투척 무기 사용률"})
-
+st.markdown(' ')
+st.markdown(' ')
+st.markdown(' ')
+st.markdown(' ')
 # 팀 선택
 team_name = st.selectbox("원하시는 팀을 선택해 주세여", ('17', '4AM', 'ACE', 'CES', 'DAY', 'DNW', 'EXO', 'FaZe',
         'GBL', 'GEN', 'GEX', 'HOWL', 'III', 'LG', 'NAVI', 'NH', 'PLM', 'PTG',
         'PeRo', 'SQ', 'SST', 'STK', 'TWIS', 'Tian'))
-
+st.markdown(' ')
 choice = st.selectbox("원하시는 정보를 선택해서 확인해주세여", ('선택해 주세요','총 얻은 아이템', '총 사용한 아이템' , '아이템 사용률'))
 
 A = aab
@@ -176,6 +179,7 @@ CC = C[["사용한 회복템",team_name]]
 DD = D[["사용한 투척 무기",team_name]]
 EE = E[["회복템 사용률",team_name]]
 FF = F[["투척 무기 사용률",team_name]]
+st.markdown(' ')
 def plot_item():
     if choice =='총 얻은 아이템':
     # 각 차트를 시각화하고 웹 앱으로 만들기
@@ -189,7 +193,8 @@ def plot_item():
         fig, ax = plt.subplots()
         sns.barplot(data=B.sort_values(team_name, ascending=False), x=team_name, y='투척 무기', palette='YlOrBr')
         st.pyplot(fig)
-
+st.markdown(' ')
+st.markdown(' ')
     elif choice == '총 사용한 아이템':
         st.dataframe(CC, use_container_width=True)
         fig, ax = plt.subplots()
@@ -200,7 +205,8 @@ def plot_item():
         fig, ax = plt.subplots()
         sns.barplot(data=D.sort_values(team_name, ascending=False), x=team_name, y='사용한 투척 무기', palette='YlOrBr')
         st.pyplot(fig)
-
+st.markdown(' ')
+st.markdown(' ')
     else:
         st.dataframe(EE, use_container_width=True)
         fig, ax = plt.subplots()
