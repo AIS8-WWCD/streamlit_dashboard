@@ -135,8 +135,8 @@ cc = cc.drop(['column_name_1'], axis=1)
 cc = cc.groupby('team').sum()
 cc = cc.T
 cc = cc.reset_index()
-aab = aa.iloc[:6]
-aac = aa.iloc[6:]
+aab = aa.iloc[:7]
+aac = aa.iloc[7:]
 aab = aab.rename(columns={'index': '회복템'})
 aac = aac.rename(columns={'index': '투척 무기'})
 bb = bb.rename(columns={'index': '사용한 회복템'})
