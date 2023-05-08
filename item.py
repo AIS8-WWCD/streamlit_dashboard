@@ -1,210 +1,129 @@
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
-import matplotlib.ticker as mtick
 import streamlit as st
-import koreanize_matplotlib
+import pandas as pd
+from PIL import Image
+from PyPDF2 import PdfFileReader
+import matplotlib.pyplot as plt
+import plotly.express as px
+import os
+
+st.set_page_config(page_title="BattleGround_Final", page_icon=":guardsman:", layout="wide")
+st.title(':scroll: 배틀그라운드: 초보자 가이드 :scroll:')
+st.header('WWCD 초보자 가이드에 오신 것을 환영합니다! :sparkles:')
+st.markdown(' ')
+st.markdown(' ')
+
+# 마크다운 문법 지원
+# 컬러코드: blue, green, orange, red, violet
+st.markdown(' **PUBG 글로벌 시리즈의 그 첫 번째 대회, PGS 1**이 동남아시아의 중심, 말레이시아, 쿠알라룸푸르에서 개최되었습니다!')
+st.markdown(" PGS 1은 4월 27일부터 5월 7일까지의 일정으로 진행되며, 그룹 스테이지, 승자/패자 브래킷 그리고 그랜드 파이널까지의 여정으로 구성되어 있는데요,")
+st.markdown(' PGS 1은 총 24개의 탑 티어 글로벌 팀들이 Battle Arena Malaysia 경기장에 모여 총상금 $500,000을 놓고 격돌하게 됩니다!')
+st.markdown(' 경기에서 진행될 맵은 에란겔과 미라마, 두 개의 맵입니다.')
+st.markdown(" 4월 27일부터 29일까지의 총 18번의 경기에서 얻어온 70만 개가 넘는 다양한 로그 데이터를 분석하여 신규 유저분들에게 도움이 되고자, PGS 1에서 얻은 바탕으로 초보자 가이드를 만들어 보았습니다.")
+st.markdown(' 초보자 가이드로 쓰일 만한 내용들을 많이 추가해야할 듯하다! ! ! ! 아 건님거랑 합치면 되겠다')
+st.markdown(' ')
+st.markdown(' ')
+# Subheader 적용
+st.subheader(':mag: 선수들이 가장 많이 사용했던 이것은?')
 
 # 데이터 불러오기
-a = pd.read_csv('https://raw.githubusercontent.com/AIS8-WWCD/streamlit_dashboard/main/heal_boost_data.csv')
-b = pd.read_csv('https://raw.githubusercontent.com/AIS8-WWCD/streamlit_dashboard/main/heal.csv')
-c = pd.read_csv('https://raw.githubusercontent.com/AIS8-WWCD/streamlit_dashboard/main/Throwable_data.csv')
-# match_id 컬럼 제거
-a = a.drop("match_id", axis=1)
-b = b.drop("match_id", axis=1)
-c = c.drop("match_id", axis=1)
+df_use_gun = pd.read_csv("https://raw.githubusercontent.com/AIS8-WWCD/streamlit_dashboard/main/pages/df_use_gun.csv")
+df_handgun_weapon = pd.read_csv("https://raw.githubusercontent.com/AIS8-WWCD/streamlit_dashboard/main/pages/df_handgun_weapon.csv")
+df_throwable_weapon = pd.read_csv("https://raw.githubusercontent.com/AIS8-WWCD/streamlit_dashboard/main/pages/df_throwable_weapon.csv")
+df_parts_value = pd.read_csv("https://raw.githubusercontent.com/AIS8-WWCD/streamlit_dashboard/main/pages/df_parts_value.csv")
+df_upper = pd.read_csv("https://raw.githubusercontent.com/AIS8-WWCD/streamlit_dashboard/main/pages/df_upper.csv")
+df_Muzzle = pd.read_csv("https://raw.githubusercontent.com/AIS8-WWCD/streamlit_dashboard/main/pages/df_Muzzle.csv")
+df_Stock = pd.read_csv("https://raw.githubusercontent.com/AIS8-WWCD/streamlit_dashboard/main/pages/df_Stock.csv")
+df_Lower = pd.read_csv("https://raw.githubusercontent.com/AIS8-WWCD/streamlit_dashboard/main/pages/df_Lower.csv")
+df_Magazine = pd.read_csv("https://raw.githubusercontent.com/AIS8-WWCD/streamlit_dashboard/main/pages/df_Magazine.csv")
 
-# 컬럼명 변경
-a = a.rename(columns={"Item_Heal_MedKit": "의료용 키트",
-                      "Item_Heal_FirstAid_C": "구급 상자",
-                      "Item_Heal_Bandage_C": "붕대",
-                      "Item_Boost_AdrenalineSyringe_C": "아드레날린 주사기",
-                      "Item_Boost_PainKiller_C": "진통제",
-                      "Item_Boost_EnergyDrink_C": "에너지 드링크",
-                      "Item_Weapon_Molotov_C": "화염병",
-                      "Item_Weapon_SmokeBomb_C": "연막탄",
-                      "Item_Weapon_FlashBang_C": "섬광탄",
-                      "Item_Weapon_Grenade_C": "수류탄"})
-b = b.rename(columns={"Item_Heal_MedKit": "의료용 키트",
-                      "Item_Heal_FirstAid_C": "구급 상자",
-                      "Item_Heal_Bandage_C": "붕대",
-                      "Item_Boost_AdrenalineSyringe_C": "아드레날린 주사기",
-                      "Item_Boost_PainKiller_C": "진통제",
-                      "Item_Boost_EnergyDrink_C": "에너지 드링크"})
-c = c.rename(columns={"Item_Weapon_Molotov_C": "화염병",
-                      "Item_Weapon_SmokeBomb_C": "연막탄",
-                      "Item_Weapon_FlashBang_C": "섬광탄",
-                      "Item_Weapon_Grenade_C": "수류탄"})
-
-# 복사본 생성
-aa = a.copy()
-bb = b.copy()
-cc = c.copy()
-
-# 아이템 사용 횟수 합계 계산
-a = a.sum()
-b = b.sum()
-c = c.sum()
-
-# 계산된 값으로 데이터프레임 생성
-a = pd.DataFrame(a).reset_index()
-b = pd.DataFrame(b).reset_index()
-c = pd.DataFrame(c).reset_index()
-
-# 컬럼명 변경
-a = a.rename(columns={0: "get_item"})
-b = b.rename(columns={0: "use_heal"})
-c = c.rename(columns={0: "use_throw"})
-
-# 인덱스 수정
-ab = a.iloc[1:7]
-ac = a.iloc[7:]
-b = b.iloc[1:]
-c = c.iloc[1:]
-
-# 병합
-ab = pd.merge(ab, b, on='index', how='outer')
-ac = pd.merge(ac, c, on='index', how='outer')
-
-# 회복 아이템과 투척 무기의 사용률 계산하기
-ab = ab.rename(columns={"index": "heal"})
-ac = ac.rename(columns={"index": "throw"})
-
-ab["use_rate"] = ab["use_heal"]/ab["get_item"] * 100
-ac["use_rate"] = ac["use_throw"]/ac["get_item"] * 100
-
-ab['use_rate'] = ab['use_rate'].astype(float)
-ac['use_rate'] = ac['use_rate'].astype(float)
-
-ab['use_rate'] = ab['use_rate'].round(1)
-ac['use_rate'] = ac['use_rate'].round(1)
-
-ab = ab.rename(columns={'heal': "회복아이템", 'get_item': "얻은 아이템",
-                        'use_heal': "사용한 회복템", 'use_rate': "아이템 사용률"})
-ac = ac.rename(columns={'throw': "투척 무기", 'get_item': "얻은 아이템",
-                        'use_throw': "사용한 투척 무기", 'use_rate': "아이템 사용률"})
-
-choice_1 = st.selectbox("보고 싶은 그래프", ('총 얻은 회복템', '총 얻은 투척 무기'))
-def plot_items_stats():
-    if choice_1 == '총 얻은 회복템':
-        # 그래프 그리기
-        st.dataframe(ab, use_container_width=True)
-        fig1 = plt.figure(figsize=(15, 10))
-        sns.barplot(data=ab.sort_values("얻은 아이템", ascending=False), x="회복아이템", y="얻은 아이템", palette='YlOrBr')
-        st.pyplot(fig1)
-
-        fig2 = plt.figure(figsize=(15, 5))
-        sns.barplot(data=ab.sort_values("사용한 회복템", ascending=False), x="회복아이템", y="사용한 회복템", palette='YlOrBr')
-        st.pyplot(fig2)
-
-        fig3 = plt.figure(figsize=(15, 5))
-        r = sns.barplot(data=ab.sort_values("아이템 사용률", ascending=False), x="회복아이템", y="아이템 사용률", palette='YlOrBr')
-        r.yaxis.set_major_formatter(mtick.PercentFormatter())
-        st.pyplot(fig3)
-    else:
-        st.dataframe(ac, use_container_width=True)
-        fig4 = plt.figure(figsize=(15, 10))
-        sns.barplot(data=ac.sort_values("얻은 아이템", ascending=False), x="투척 무기", y="얻은 아이템", palette='YlOrBr')
-        st.pyplot(fig4)
-
-        fig5 = plt.figure(figsize=(15, 5))
-        sns.barplot(data=ac.sort_values("사용한 투척 무기", ascending=False), x="투척 무기", y="사용한 투척 무기", palette='YlOrBr')
-        st.pyplot(fig5)
-
-        fig6 = plt.figure(figsize=(15, 5))
-        r = sns.barplot(data=ac.sort_values("아이템 사용률", ascending=False), x="투척 무기", y="아이템 사용률", palette='YlOrBr')
-        r.yaxis.set_major_formatter(mtick.PercentFormatter())
-        st.pyplot(fig6)
+df_move_distance_mean = pd.read_csv("https://raw.githubusercontent.com/AIS8-WWCD/streamlit_dashboard/main/pages/df_move_distance_mean.csv")
+df_survive_mean = pd.read_csv("https://raw.githubusercontent.com/AIS8-WWCD/streamlit_dashboard/main/pages/df_survive_mean.csv")
 
 
-plot_items_stats()
-    
-# 데이터프레임 생성 및 전처리
-aa[['team','column_name_1']] = aa['character_name'].str.split('_', expand=True)
-aa = aa.drop(['column_name_1'], axis=1)
-aa = aa.groupby('team').sum()
-aa = aa.T
-aa = aa.reset_index()
-bb[['team','column_name_1']] = bb['character_name'].str.split('_', expand=True)
-bb = bb.drop(['column_name_1'], axis=1)
-bb = bb.groupby('team').sum()
-bb = bb.T
-bb = bb.reset_index()
-cc[['team','column_name_1']] = cc['attacker_name'].str.split('_', expand=True)
-cc = cc.drop(['column_name_1'], axis=1)
-cc = cc.groupby('team').sum()
-cc = cc.T
-cc = cc.reset_index()
-aab = aa.iloc[:7]
-aac = aa.iloc[7:]
-aab = aab.rename(columns={'index': '회복템'})
-aac = aac.rename(columns={'index': '투척 무기'})
-bb = bb.rename(columns={'index': '사용한 회복템'})
-cc = cc.rename(columns={'index': '사용한 투척 무기'})
-aac = aac.reset_index(drop=True)
-aab = aab.iloc[1:,:]
-bb = bb.iloc[1:,:]
-cc = cc.iloc[1:,:]
-cc = cc.reindex([1,2,4,3])
-cc = cc.reset_index(drop=True)
-e = pd.concat([aab.iloc[:,:1],bb/aab * 100], axis=1).iloc[:,:-2]
-f = pd.concat([aac.iloc[:,:1],cc/aac * 100], axis=1).iloc[:,:-2]
-e = e.rename(columns = {"회복템" : "회복템 사용률"})
-f = f.rename(columns = {"투척 무기" : "투척 무기 사용률"})
+# 선택 박스
+pick = st.selectbox(
+    ' 공식 경기에서 선수들이 가장 많이 사용했던 **이것**은? 원하시는 선택지를 골라주세요! 추가로 이에 관련된 무기 정보들 더 넣기',
+    ("선택해주세요", '총기류', '보조무기', "투척무기", "총구", "탄창",  '손잡이', "파츠", "조준선", "스톡"),  index=0)
+if pick == '총기류':
+    st.write('선수들이 가장 많이 사용했던 **총기류**는 무엇일까요?')
+    fig = px.bar(df_use_gun.set_index("index").sort_values("itemId"), orientation='h', color=df_use_gun["itemId"][::-1], color_continuous_scale='YlOrBr')
+    fig.update_layout(width=1000, height=500)
+    st.plotly_chart(fig)
+elif pick == '보조무기':
+    df_handgun_weapon["index"] = df_handgun_weapon["index"].str.replace("Item_Weapon_", repl=r'', regex=True)
+    df_handgun_weapon["index"] = df_handgun_weapon["index"].str.replace("_C", repl=r'', regex=True)
+    fig = px.bar(df_handgun_weapon.set_index("index"), color=df_handgun_weapon["itemId"], color_continuous_scale='YlOrBr')
+    fig.update_layout(width=1000, height=500)
+    st.plotly_chart(fig)
+elif pick == '투척무기':
+    st.write('선수들이 가장 많이 사용했던 **투척y무기**는 무엇일까요?')
+    df_throwable_weapon["index"] = df_throwable_weapon["index"].str.replace("Item_Weapon_", repl=r'', regex=True)
+    df_throwable_weapon["index"] = df_throwable_weapon["index"].str.replace("_C", repl=r'', regex=True)
+    fig = px.bar(df_throwable_weapon.set_index("index"), color=df_throwable_weapon["itemId"], color_continuous_scale='YlOrBr')
+    fig.update_layout(width=1000, height=500)
+    st.plotly_chart(fig)    
+elif pick == '총구':
+    st.write('선수들이 가장 많이 사용했던 **총구**는 무엇일까요?')
+    df_Muzzle["index"] = df_Muzzle["index"].str.replace("Item_Attach_Weapon_Muzzle_", repl=r'', regex=True)
+    df_Muzzle["index"] = df_Muzzle["index"].str.replace("_C", repl=r'', regex=True)
+    fig = px.bar(df_Muzzle.set_index("index").sort_values(by="itemId"), orientation='h', color=df_Muzzle["itemId"][::-1] , color_continuous_scale='YlOrBr')
+    fig.update_layout(width=1000, height=500)
+    st.plotly_chart(fig)
+elif pick == '탄창':
+    st.write('선수들이 가장 많이 사용했던 **탄창**은 무엇일까요?')
+    df_Magazine["index"] = df_Magazine["index"].str.replace("Item_Attach_Weapon_Magazine_", repl=r'', regex=True)
+    df_Magazine["index"] = df_Magazine["index"].str.replace("_C", repl=r'', regex=True)
+    fig = px.bar(df_Magazine.set_index("index").sort_values(by="itemId"), orientation='h', color=df_Magazine["itemId"][::-1] , color_continuous_scale='YlOrBr')
+    fig.update_layout(width=1000, height=500)
+    st.plotly_chart(fig)
+elif pick == '손잡이':
+    st.write('선수들이 가장 많이 사용했던 **손잡이**는 무엇일까요?')
+    df_Lower["index"] = df_Lower["index"].str.replace("Item_Attach_Weapon_Lower_", repl=r'', regex=True)
+    df_Lower["index"] = df_Lower["index"].str.replace("_C", repl=r'', regex=True)
+    fig = px.bar(df_Lower.set_index("index"), color=df_Lower["itemId"] , color_continuous_scale='YlOrBr')
+    fig.update_layout(width=1000, height=500)
+    st.plotly_chart(fig)
+elif pick == '파츠':
+    st.write('선수들이 가장 많이 사용했던 **파츠**는 무엇일까요?')
+    fig = px.bar(df_parts_value, x="index", y="parts", color=df_parts_value["parts"] , color_continuous_scale='YlOrBr')
+    fig.update_layout(width=1000, height=500)
+    st.plotly_chart(fig)
+elif pick == '조준선':
+    st.write('선수들이 가장 많이 사용했던 **조준선**은 무엇일까요?')
+    df_upper["index"] = df_upper["index"].str.replace("Item_Attach_Weapon_Upper_", repl=r'', regex=True)
+    df_upper["index"] = df_upper["index"].str.replace("_C", repl=r'', regex=True)
+    fig = px.bar(df_upper.set_index("index"), color=df_upper["itemId"] , color_continuous_scale='YlOrBr')
+    fig.update_layout(width=1000, height=500)
+    st.plotly_chart(fig)
+elif pick == "스톡":
+    st.write('선수들이 가장 많이 사용했던 **스톡**은 무엇일까요?')
+    df_Stock["index"] = df_Stock["index"].str.replace("Item_Attach_Weapon_Stock_", repl=r'', regex=True)
+    df_Stock["index"] = df_Stock["index"].str.replace("_C", repl=r'', regex=True)
+    fig = px.bar(df_Stock.set_index("index"), color=df_Stock["itemId"] , color_continuous_scale='YlOrBr')
+    fig.update_layout(width=1000, height=500)
+    st.plotly_chart(fig)
+else:
+     st.write(" ")
 
-# 팀 선택
-team_name = st.selectbox("팀 선택", ('17', '4AM', 'ACE', 'CES', 'DAY', 'DNW', 'EXO', 'FaZe',
-        'GBL', 'GEN', 'GEX', 'HOWL', 'III', 'LG', 'NAVI', 'NH', 'PLM', 'PTG',
-        'PeRo', 'SQ', 'SST', 'STK', 'TWIS', 'Tian'))
+st.markdown(' ')
+st.markdown(' ')
+st.markdown(' ')
+st.markdown(' ')
+st.subheader(':mag: 선수들의 평균 생존 시간은?')
+st.write('4월 27일부터 4월 29일까지 24개팀의 전체 선수들의 평균 생존 시간입니다.')
+st.caption('그래프 특성상 x축에 99명의 전체 선수의 이름이 표시되지 않았습니다.. 이 부분은 사진 첨부 말고 코드를 넣어서 직접 그래프를 짜보는 게 어떨까 ')
+fig = px.bar(df_survive_mean.sort_values('timeSurvived', ascending=False), x="name", y = 'timeSurvived')
+fig.update_layout(width=1000, height=500)
+st.plotly_chart(fig)
+# img = Image.open(r"C:\Users\wldus\OneDrive\바탕 화면\pythonworkspace\final_project\image\전체선수_평균생존시간.png")
+# st.image(img, width=1000)
 
-choice = st.selectbox("보고 싶은 그래프", ('총 얻은 아이템', '총 사용한 아이템' , '아이템 사용률'))
-
-A = aab
-B = aac
-C = bb
-D = cc
-E = e
-F = f
-AA = A[["회복템",team_name]]
-BB = B[["투척 무기",team_name]]
-CC = C[["사용한 회복템",team_name]]
-DD = D[["사용한 투척 무기",team_name]]
-EE = E[["회복템 사용률",team_name]]
-FF = F[["투척 무기 사용률",team_name]]
-def plot_item():
-    if choice =='총 얻은 아이템':
-    # 각 차트를 시각화하고 웹 앱으로 만들기
-
-        st.dataframe(AA, use_container_width=True)
-        fig, ax = plt.subplots()
-        sns.barplot(data=A.sort_values(team_name, ascending=False), x=team_name, y='회복템', palette='YlOrBr')
-        st.pyplot(fig)
-        
-        st.dataframe(BB, use_container_width=True)
-        fig, ax = plt.subplots()
-        sns.barplot(data=B.sort_values(team_name, ascending=False), x=team_name, y='투척 무기', palette='YlOrBr')
-        st.pyplot(fig)
-
-    elif choice == '총 사용한 아이템':
-        st.dataframe(CC, use_container_width=True)
-        fig, ax = plt.subplots()
-        sns.barplot(data=C.sort_values(team_name, ascending=False), x=team_name, y='사용한 회복템', palette='YlOrBr')
-        st.pyplot(fig)
-
-        st.dataframe(DD, use_container_width=True)   
-        fig, ax = plt.subplots()
-        sns.barplot(data=D.sort_values(team_name, ascending=False), x=team_name, y='사용한 투척 무기', palette='YlOrBr')
-        st.pyplot(fig)
-
-    else:
-        st.dataframe(EE, use_container_width=True)
-        fig, ax = plt.subplots()
-        sns.barplot(data=E.sort_values(team_name, ascending=False), x=team_name, y='회복템 사용률', palette='YlOrBr')
-        st.pyplot(fig)
-
-        st.dataframe(FF, use_container_width=True)
-        fig, ax = plt.subplots()
-        sns.barplot(data=F.sort_values(team_name, ascending=False), x=team_name, y='투척 무기 사용률', palette='YlOrBr')
-        st.pyplot(fig)
-
-plot_item()
+st.markdown(' ')
+st.markdown(' ')
+st.markdown(' ')
+st.subheader(':mag: 선수들의 평균 이동 거리는?')
+st.write('4월 27일부터 4월 29일까지 24개팀의 전체 선수들의 평균 이동 거리입니다.')
+st.caption('그래프 특성상 x축에 99명의 전체 선수의 이름이 표시되지 않았습니다.. 이 부분은 사진 첨부 말고 코드를 넣어서 직접 그래프를 짜보는 게 어떨까 ')
+fig = px.bar(df_move_distance_mean.sort_values(by="평균거리", ascending=False), x="name", y = ["주행거리", "도보거리", "수영거리"], )
+fig.update_layout(width=1000, height=500)
+st.plotly_chart(fig)
