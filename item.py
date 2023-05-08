@@ -144,6 +144,8 @@ cc = cc.rename(columns={'index': '사용한 투척 무기'})
 aac = aac.reset_index(drop=True)
 aab = aab.iloc[1:,:]
 aac = aac.iloc[1:,:]
+bb = bb.iloc[1:,:]
+cc = cc.iloc[1:,:]
 e = pd.concat([aab.iloc[:,:1],bb/aab * 100], axis=1).iloc[:,:-2]
 f = pd.concat([aac.iloc[:,:1],cc/aac * 100], axis=1).iloc[:,:-2]
 e = e.rename(columns = {"회복템" : "회복템 사용률"})
