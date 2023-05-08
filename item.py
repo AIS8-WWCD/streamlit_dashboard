@@ -5,7 +5,32 @@ from PyPDF2 import PdfFileReader
 import matplotlib.pyplot as plt
 import plotly.express as px
 import os
+st.write("df_use_gun")
+st.dataframe(df_use_gun)
 
+st.write("df_handgun_weapon")
+st.dataframe(df_handgun_weapon)
+
+st.write("df_throwable_weapon")
+st.dataframe(df_throwable_weapon)
+
+st.write("df_parts_value")
+st.dataframe(df_parts_value)
+
+st.write("df_upper")
+st.dataframe(df_upper)
+
+st.write("df_Muzzle")
+st.dataframe(df_Muzzle)
+
+st.write("df_Stock")
+st.dataframe(df_Stock)
+
+st.write("df_Lower")
+st.dataframe(df_Lower)
+
+st.write("df_Magazine")
+st.dataframe(df_Magazine)
 st.set_page_config(page_title="BattleGround_Final", page_icon=":guardsman:", layout="wide")
 st.title(':scroll: 배틀그라운드: 초보자 가이드 :scroll:')
 st.header('WWCD 초보자 가이드에 오신 것을 환영합니다! :sparkles:')
