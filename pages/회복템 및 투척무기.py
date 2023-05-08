@@ -89,7 +89,7 @@ ab = ab.rename(columns={'heal': "회복아이템", 'get_item': "얻은 아이템
 ac = ac.rename(columns={'throw': "투척 무기", 'get_item': "얻은 아이템",
                         'use_throw': "사용한 투척 무기", 'use_rate': "아이템 사용률"})
 
-choice_1 = st.selectbox("보고 싶은 그래프", ('총 얻은 회복템', '총 얻은 투척 무기'))
+choice_1 = st.selectbox("원하시는 정보를 선택해서 확인해주세여", ('선택해 주세요','총 얻은 회복템', '총 얻은 투척 무기'))
 def plot_items_stats():
     if choice_1 == '총 얻은 회복템':
         # 그래프 그리기
@@ -158,11 +158,11 @@ e = e.rename(columns = {"회복템" : "회복템 사용률"})
 f = f.rename(columns = {"투척 무기" : "투척 무기 사용률"})
 
 # 팀 선택
-team_name = st.selectbox("팀 선택", ('17', '4AM', 'ACE', 'CES', 'DAY', 'DNW', 'EXO', 'FaZe',
+team_name = st.selectbox("원하시는 팀을 선택해 주세여", ('17', '4AM', 'ACE', 'CES', 'DAY', 'DNW', 'EXO', 'FaZe',
         'GBL', 'GEN', 'GEX', 'HOWL', 'III', 'LG', 'NAVI', 'NH', 'PLM', 'PTG',
         'PeRo', 'SQ', 'SST', 'STK', 'TWIS', 'Tian'))
 
-choice = st.selectbox("보고 싶은 그래프", ('총 얻은 아이템', '총 사용한 아이템' , '아이템 사용률'))
+choice = st.selectbox("원하시는 정보를 선택해서 확인해주세여", ('선택해 주세요','총 얻은 아이템', '총 사용한 아이템' , '아이템 사용률'))
 
 A = aab
 B = aac
