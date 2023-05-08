@@ -5,6 +5,11 @@ import matplotlib.ticker as mtick
 import streamlit as st
 import koreanize_matplotlib
 
+
+st.markdown(" PGS 1에서 선수들의 회복템과 투척 무기에 대해 알아봐요")
+st.markdown(' ')
+st.markdown(' ')
+# Subheader 적용
 # 데이터 불러오기
 a = pd.read_csv('https://raw.githubusercontent.com/AIS8-WWCD/streamlit_dashboard/main/heal_boost_data.csv')
 b = pd.read_csv('https://raw.githubusercontent.com/AIS8-WWCD/streamlit_dashboard/main/heal.csv')
