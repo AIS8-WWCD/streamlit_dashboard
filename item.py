@@ -142,6 +142,10 @@ aac = aac.rename(columns={'index': '투척 무기'})
 bb = bb.rename(columns={'index': '사용한 회복템'})
 cc = cc.rename(columns={'index': '사용한 투척 무기'})
 aac = aac.reset_index(drop=True)
+st.dataframe(aab, use_container_width=True)
+st.dataframe(aac, use_container_width=True)
+st.dataframe(bb, use_container_width=True)
+st.dataframe(cc, use_container_width=True)
 aab = aab.iloc[1:,:]
 aac = aac.iloc[1:,:]
 bb = bb.iloc[1:,:]
