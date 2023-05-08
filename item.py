@@ -90,29 +90,29 @@ def plot_items_stats():
         # 그래프 그리기
         st.dataframe(ab, use_container_width=True)
         fig1 = plt.figure(figsize=(15, 10))
-        sns.barplot(data=ab.sort_values("얻은 아이템", ascending=False), x="회복아이템", y="얻은 아이템", palette='YlOrBr')
+        sns.bar(data=ab.sort_values("얻은 아이템", ascending=False), x="회복아이템", y="얻은 아이템", palette='YlOrBr')
         st.pyplot(fig1)
 
         fig2 = plt.figure(figsize=(15, 5))
-        sns.barplot(data=ab.sort_values("사용한 회복템", ascending=False), x="회복아이템", y="사용한 회복템", palette='YlOrBr')
+        sns.bar(data=ab.sort_values("사용한 회복템", ascending=False), x="회복아이템", y="사용한 회복템", palette='YlOrBr')
         st.pyplot(fig2)
 
         fig3 = plt.figure(figsize=(15, 5))
-        r = sns.barplot(data=ab.sort_values("아이템 사용률", ascending=False), x="회복아이템", y="아이템 사용률", palette='YlOrBr')
+        r = sns.bar(data=ab.sort_values("아이템 사용률", ascending=False), x="회복아이템", y="아이템 사용률", palette='YlOrBr')
         r.yaxis.set_major_formatter(mtick.PercentFormatter())
         st.pyplot(fig3)
     else:
         st.dataframe(ac, use_container_width=True)
         fig4 = plt.figure(figsize=(15, 10))
-        sns.barplot(data=ac.sort_values("얻은 아이템", ascending=False), x="투척 무기", y="얻은 아이템", palette='YlOrBr')
+        sns.bar(data=ac.sort_values("얻은 아이템", ascending=False), x="투척 무기", y="얻은 아이템", palette='YlOrBr')
         st.pyplot(fig4)
 
         fig5 = plt.figure(figsize=(15, 5))
-        sns.barplot(data=ac.sort_values("사용한 투척 무기", ascending=False), x="투척 무기", y="사용한 투척 무기", palette='YlOrBr')
+        sns.bar(data=ac.sort_values("사용한 투척 무기", ascending=False), x="투척 무기", y="사용한 투척 무기", palette='YlOrBr')
         st.pyplot(fig5)
 
         fig6 = plt.figure(figsize=(15, 5))
-        r = sns.barplot(data=ac.sort_values("아이템 사용률", ascending=False), x="투척 무기", y="아이템 사용률", palette='YlOrBr')
+        r = sns.bar(data=ac.sort_values("아이템 사용률", ascending=False), x="투척 무기", y="아이템 사용률", palette='YlOrBr')
         r.yaxis.set_major_formatter(mtick.PercentFormatter())
         st.pyplot(fig6)
 
