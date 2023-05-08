@@ -37,6 +37,7 @@ df_Magazine = pd.read_csv("https://raw.githubusercontent.com/AIS8-WWCD/streamlit
 
 df_move_distance_mean = pd.read_csv("https://raw.githubusercontent.com/AIS8-WWCD/streamlit_dashboard/main/pages/df_move_distance_mean.csv")
 df_survive_mean = pd.read_csv("https://raw.githubusercontent.com/AIS8-WWCD/streamlit_dashboard/main/pages/df_survive_mean.csv")
+
 st.write("df_use_gun")
 st.dataframe(df_use_gun)
 
