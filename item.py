@@ -147,10 +147,6 @@ bb = bb.iloc[1:,:]
 cc = cc.iloc[1:,:]
 cc = cc.reindex([1,2,4,3])
 cc = cc.reset_index(drop=True)
-st.dataframe(aab, use_container_width=True)
-st.dataframe(aac, use_container_width=True)
-st.dataframe(bb, use_container_width=True)
-st.dataframe(cc, use_container_width=True)
 e = pd.concat([aab.iloc[:,:1],bb/aab * 100], axis=1).iloc[:,:-2]
 f = pd.concat([aac.iloc[:,:1],cc/aac * 100], axis=1).iloc[:,:-2]
 e = e.rename(columns = {"회복템" : "회복템 사용률"})
