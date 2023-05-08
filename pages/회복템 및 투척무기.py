@@ -120,7 +120,7 @@ def plot_items_stats():
         r = sns.barplot(data=ac.sort_values("아이템 사용률", ascending=False), x="투척 무기", y="아이템 사용률", palette='YlOrBr')
         r.yaxis.set_major_formatter(mtick.PercentFormatter())
         st.pyplot(fig6)
-     else:
+    else:
         st.write(" ")
 
 plot_items_stats()
