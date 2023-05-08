@@ -193,9 +193,7 @@ def plot_item():
         fig, ax = plt.subplots()
         sns.barplot(data=B.sort_values(team_name, ascending=False), x=team_name, y='투척 무기', palette='YlOrBr')
         st.pyplot(fig)
-        
-st.markdown(' ')
-st.markdown(' ')
+        st.markdown(' ')
 
     elif choice == '총 사용한 아이템':
         st.dataframe(CC, use_container_width=True)
@@ -207,9 +205,7 @@ st.markdown(' ')
         fig, ax = plt.subplots()
         sns.barplot(data=D.sort_values(team_name, ascending=False), x=team_name, y='사용한 투척 무기', palette='YlOrBr')
         st.pyplot(fig)
-        
-st.markdown(' ')
-st.markdown(' ')
+        st.markdown(' ')
 
     else:
         st.dataframe(EE, use_container_width=True)
