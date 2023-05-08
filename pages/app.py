@@ -33,9 +33,9 @@ df_parts_value = pd.read_csv("https://raw.githubusercontent.com/AIS8-WWCD/stream
 df_upper = pd.read_csv("https://raw.githubusercontent.com/AIS8-WWCD/streamlit_dashboard/pages/df_upper.csv")
 df_Muzzle = pd.read_csv("https://raw.githubusercontent.com/AIS8-WWCD/streamlit_dashboard/pages/df_Muzzle.csv")
 df_Stock = pd.read_csv("https://raw.githubusercontent.com/AIS8-WWCD/streamlit_dashboard/pages/df_Stock.csv")
-df_use_gun = pd.read_csv("https://raw.githubusercontent.com/AIS8-WWCD/streamlit_dashboard/pages/df_use_gun.csv")
 df_Lower = pd.read_csv("https://raw.githubusercontent.com/AIS8-WWCD/streamlit_dashboard/pages/df_Lower.csv")
 df_Magazine = pd.read_csv("https://raw.githubusercontent.com/AIS8-WWCD/streamlit_dashboard/pages/df_Magazine.csv")
+
 df_move_distance_mean = pd.read_csv("https://raw.githubusercontent.com/AIS8-WWCD/streamlit_dashboard/pages/df_move_distance_mean.csv")
 df_survive_mean = pd.read_csv("https://raw.githubusercontent.com/AIS8-WWCD/streamlit_dashboard/pages/df_survive_mean.csv")
 
