@@ -38,6 +38,16 @@ df_Magazine = pd.read_csv("https://raw.githubusercontent.com/AIS8-WWCD/streamlit
 df_move_distance_mean = pd.read_csv("https://raw.githubusercontent.com/AIS8-WWCD/streamlit_dashboard/main/pages/df_move_distance_mean.csv")
 df_survive_mean = pd.read_csv("https://raw.githubusercontent.com/AIS8-WWCD/streamlit_dashboard/main/pages/df_survive_mean.csv")
 
+translation_dict = {
+    'Item_Attach_Weapon_Lower_Foregrip_C': '수직손잡이',
+    'Item_Attach_Weapon_Lower_HalfGrip_C': '하프 그립',
+    'Item_Attach_Weapon_Lower_ThumbGrip_C': '엄지 그립',
+    'Item_Attach_Weapon_Lower_LightweightForeGrip_C': '라이트 그',
+    'Item_Attach_Weapon_Lower_AngledForeGrip_C': '앵글 손잡이'
+}
+
+df_use_gun['index'] = df_use_gun['index'].map(translation_dict)
+
 st.write("df_use_gun")
 st.dataframe(df_use_gun)
 
