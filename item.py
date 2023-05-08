@@ -147,7 +147,6 @@ st.dataframe(aac, use_container_width=True)
 st.dataframe(bb, use_container_width=True)
 st.dataframe(cc, use_container_width=True)
 aab = aab.iloc[1:,:]
-aac = aac.iloc[1:,:]
 bb = bb.iloc[1:,:]
 cc = cc.iloc[1:,:]
 e = pd.concat([aab.iloc[:,:1],bb/aab * 100], axis=1).iloc[:,:-2]
