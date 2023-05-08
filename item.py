@@ -6,23 +6,23 @@ import matplotlib.pyplot as plt
 import plotly.express as px
 import os
 
-# st.set_page_config(page_title="BattleGround_Final", page_icon=":guardsman:", layout="wide")
-# st.title(':scroll: 배틀그라운드: 초보자 가이드 :scroll:')
-# st.header('WWCD 초보자 가이드에 오신 것을 환영합니다! :sparkles:')
-# st.markdown(' ')
-# st.markdown(' ')
+st.set_page_config(page_title="BattleGround_Final", page_icon=":guardsman:", layout="wide")
+st.title(':scroll: 배틀그라운드: 초보자 가이드 :scroll:')
+st.header('WWCD 초보자 가이드에 오신 것을 환영합니다! :sparkles:')
+st.markdown(' ')
+st.markdown(' ')
 
-# # 마크다운 문법 지원
-# # 컬러코드: blue, green, orange, red, violet
-# st.markdown(' **PUBG 글로벌 시리즈의 그 첫 번째 대회, PGS 1**이 동남아시아의 중심, 말레이시아, 쿠알라룸푸르에서 개최되었습니다!')
-# st.markdown(" PGS 1은 4월 27일부터 5월 7일까지의 일정으로 진행되며, 그룹 스테이지, 승자/패자 브래킷 그리고 그랜드 파이널까지의 여정으로 구성되어 있는데요,")
-# st.markdown(' PGS 1은 총 24개의 탑 티어 글로벌 팀들이 Battle Arena Malaysia 경기장에 모여 총상금 $500,000을 놓고 격돌하게 됩니다!')
-# st.markdown(' 경기에서 진행될 맵은 에란겔과 미라마, 두 개의 맵입니다.')
-# st.markdown(" 4월 27일부터 29일까지의 총 18번의 경기에서 얻어온 70만 개가 넘는 다양한 로그 데이터를 분석하여 신규 유저분들에게 도움이 되고자, PGS 1에서 얻은 바탕으로 초보자 가이드를 만들어 보았습니다.")
-# st.markdown(' ')
-# st.markdown(' ')
-# # Subheader 적용
-# st.subheader(':mag: 선수들이 가장 많이 사용했던 이것은?')
+# 마크다운 문법 지원
+# 컬러코드: blue, green, orange, red, violet
+st.markdown(' **PUBG 글로벌 시리즈의 그 첫 번째 대회, PGS 1**이 동남아시아의 중심, 말레이시아, 쿠알라룸푸르에서 개최되었습니다!')
+st.markdown(" PGS 1은 4월 27일부터 5월 7일까지의 일정으로 진행되며, 그룹 스테이지, 승자/패자 브래킷 그리고 그랜드 파이널까지의 여정으로 구성되어 있는데요,")
+st.markdown(' PGS 1은 총 24개의 탑 티어 글로벌 팀들이 Battle Arena Malaysia 경기장에 모여 총상금 $500,000을 놓고 격돌하게 됩니다!')
+st.markdown(' 경기에서 진행될 맵은 에란겔과 미라마, 두 개의 맵입니다.')
+st.markdown(" 4월 27일부터 29일까지의 총 18번의 경기에서 얻어온 70만 개가 넘는 다양한 로그 데이터를 분석하여 신규 유저분들에게 도움이 되고자, PGS 1에서 얻은 바탕으로 초보자 가이드를 만들어 보았습니다.")
+st.markdown(' ')
+st.markdown(' ')
+# Subheader 적용
+st.subheader(':mag: 선수들이 가장 많이 사용했던 이것은?')
 
 # 데이터 불러오기
 df_use_gun = pd.read_csv("https://raw.githubusercontent.com/AIS8-WWCD/streamlit_dashboard/main/pages/df_use_gun.csv")
@@ -37,43 +37,6 @@ df_Magazine = pd.read_csv("https://raw.githubusercontent.com/AIS8-WWCD/streamlit
 
 df_move_distance_mean = pd.read_csv("https://raw.githubusercontent.com/AIS8-WWCD/streamlit_dashboard/main/pages/df_move_distance_mean.csv")
 df_survive_mean = pd.read_csv("https://raw.githubusercontent.com/AIS8-WWCD/streamlit_dashboard/main/pages/df_survive_mean.csv")
-
-translation_dict = {
-    'Item_Attach_Weapon_Lower_Foregrip_C': '수직손잡이',
-    'Item_Attach_Weapon_Lower_HalfGrip_C': '하프 그립',
-    'Item_Attach_Weapon_Lower_ThumbGrip_C': '엄지 그립',
-    'Item_Attach_Weapon_Lower_LightweightForeGrip_C': '라이트 그',
-    'Item_Attach_Weapon_Lower_AngledForeGrip_C': '앵글 손잡이'
-}
-
-df_use_gun['index'] = df_use_gun['index'].map(translation_dict)
-
-st.write("df_use_gun")
-st.dataframe(df_use_gun)
-
-st.write("df_handgun_weapon")
-st.dataframe(df_handgun_weapon)
-
-st.write("df_throwable_weapon")
-st.dataframe(df_throwable_weapon)
-
-st.write("df_parts_value")
-st.dataframe(df_parts_value)
-
-st.write("df_upper")
-st.dataframe(df_upper)
-
-st.write("df_Muzzle")
-st.dataframe(df_Muzzle)
-
-st.write("df_Stock")
-st.dataframe(df_Stock)
-
-st.write("df_Lower")
-st.dataframe(df_Lower)
-
-st.write("df_Magazine")
-st.dataframe(df_Magazine)
 
 # 선택 박스
 pick = st.selectbox(
