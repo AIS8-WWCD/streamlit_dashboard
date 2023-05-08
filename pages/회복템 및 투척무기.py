@@ -106,7 +106,7 @@ def plot_items_stats():
         r = sns.barplot(data=ab.sort_values("아이템 사용률", ascending=False), x="회복아이템", y="아이템 사용률", palette='YlOrBr')
         r.yaxis.set_major_formatter(mtick.PercentFormatter())
         st.pyplot(fig3)
-    else:
+    elif choice_1 == '총 얻은 투척 무기':
         st.dataframe(ac, use_container_width=True)
         fig4 = plt.figure(figsize=(15, 10))
         sns.barplot(data=ac.sort_values("얻은 아이템", ascending=False), x="투척 무기", y="얻은 아이템", palette='YlOrBr')
@@ -120,7 +120,8 @@ def plot_items_stats():
         r = sns.barplot(data=ac.sort_values("아이템 사용률", ascending=False), x="투척 무기", y="아이템 사용률", palette='YlOrBr')
         r.yaxis.set_major_formatter(mtick.PercentFormatter())
         st.pyplot(fig6)
-
+     else:
+        st.write(" ")
 
 plot_items_stats()
     
@@ -207,7 +208,7 @@ def plot_item():
         st.pyplot(fig)
         st.markdown(' ')
 
-    else:
+    elif choice == '아이템 사용률':
         st.dataframe(EE, use_container_width=True)
         fig, ax = plt.subplots()
         sns.barplot(data=E.sort_values(team_name, ascending=False), x=team_name, y='회복템 사용률', palette='YlOrBr')
@@ -217,5 +218,7 @@ def plot_item():
         fig, ax = plt.subplots()
         sns.barplot(data=F.sort_values(team_name, ascending=False), x=team_name, y='투척 무기 사용률', palette='YlOrBr')
         st.pyplot(fig)
+    else:
+        st.write(" ")
 
 plot_item()
