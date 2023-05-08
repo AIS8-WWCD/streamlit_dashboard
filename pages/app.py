@@ -26,7 +26,7 @@ st.markdown(' ')
 st.subheader(':mag: 선수들이 가장 많이 사용했던 이것은?')
 
 # 데이터 불러오기
-df_use_gun = pd.read_csv("https://raw.githubusercontent.com/AIS8-WWCD/streamlit_dashboard/pages/df_handgun_weapon.csv")
+df_use_gun = pd.read_csv("https://raw.githubusercontent.com/AIS8-WWCD/streamlit_dashboard/pages/df_use_gun.csv")
 df_handgun_weapon = pd.read_csv("https://raw.githubusercontent.com/AIS8-WWCD/streamlit_dashboard/pages/df_handgun_weapon.csv")
 df_throwable_weapon = pd.read_csv("https://raw.githubusercontent.com/AIS8-WWCD/streamlit_dashboard/pages/df_throwable_weapon.csv")
 df_parts_value = pd.read_csv("https://raw.githubusercontent.com/AIS8-WWCD/streamlit_dashboard/pages/df_parts_value.csv")
