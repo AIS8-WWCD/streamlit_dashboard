@@ -21,7 +21,8 @@ st.markdown(' 경기에서 진행될 맵은 에란겔과 미라마, 두 개의 �
 st.markdown(" 4월 27일부터 29일까지의 총 18번의 경기에서 얻어온 70만 개가 넘는 다양한 로그 데이터를 분석하여 신규 유저분들에게 도움이 되고자, PGS 1에서 얻은 바탕으로 초보자 가이드를 만들어 보았습니다.")
 st.markdown(' ')
 st.markdown(' ')
-
+df_move_distance_mean = pd.read_csv("https://raw.githubusercontent.com/AIS8-WWCD/streamlit_dashboard/main/pages/df_move_distance_mean.csv")
+df_survive_mean = pd.read_csv("https://raw.githubusercontent.com/AIS8-WWCD/streamlit_dashboard/main/pages/df_survive_mean.csv")
 st.markdown(' ')
 st.markdown(' ')
 st.markdown(' ')
