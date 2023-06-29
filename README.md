@@ -11,10 +11,13 @@
 #### 메인 페이지
 > 2023PGS1 경기에 대한 간략한 소개와 `선수들의 평균 생존 시간` 및 `선수들의 평균 이동 거리`에 대한 그래프를 확인할 수 있습니다.
 ![image](https://github.com/AIS8-WWCD/streamlit_dashboard/assets/124236172/4c8efdf5-419c-43fa-905f-8929d2d2bc44)
+
 #### 총기 관련 페이지
 > 2023PGS1 경기에서 프로 게이머들이 가장 많이 사용한 총기와 총기 부품(파츠, 총구, 탄창 등)을 확인할 수 있습니다.
-![image](https://github.com/AIS8-WWCD/streamlit_dashboard/assets/124236172/f2a0a632-8c0b-47b4-9c77-aa4a1ce20185)
+![image](https://github.com/AIS8-WWCD/streamlit_dashboard/assets/124236172/24157c44-00b5-4061-9c4f-896939f163df)
+
 #### 회복아이템 및 투척무기 관련 페이지
 > 2023PGS1 경기에서 회복 아이템 및 투척 무기를 얻은 횟수, 사용한 횟수, 사용률에 대한 정보를 확인할 수 있습니다.
 > 위의 정보를 팀마다(총 24개팀) 확인할 수 있습니다. 
-![image](https://github.com/AIS8-WWCD/streamlit_dashboard/assets/124236172/a88b3cd8-d0f9-4784-a1a0-6586c890b657)
+
+![image](https://github.com/AIS8-WWCD/streamlit_dashboard/assets/124236172/ffb04403-e425-407c-9df7-c6b15f8339f8)
