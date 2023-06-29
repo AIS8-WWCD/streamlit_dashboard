@@ -15,10 +15,11 @@
 #### 총기 관련 페이지
 > 2023PGS1 경기에서 프로 게이머들이 가장 많이 사용한 총기와 총기 부품(파츠, 총구, 탄창 등)을 확인할 수 있습니다.
 
-<img src="https://github.com/AIS8-WWCD/streamlit_dashboard/assets/124236172/14c1c43c-87a5-4cca-9817-3f5aa3aa08fb" width="1580" height="880">
+<img src="https://github.com/AIS8-WWCD/streamlit_dashboard/assets/124236172/14c1c43c-87a5-4cca-9817-3f5aa3aa08fb" width="1480" height="700">
 
 #### 회복아이템 및 투척무기 관련 페이지
 > 2023PGS1 경기에서 회복 아이템 및 투척 무기를 얻은 횟수, 사용한 횟수, 사용률에 대한 정보를 확인할 수 있습니다.
-> 위의 정보를 팀마다(총 24개팀) 확인할 수 있습니다. 
+> 위의 정보를 팀마다(총 24개팀) 확인할 수 있습니다.
+<img src="https://github.com/AIS8-WWCD/streamlit_dashboard/assets/124236172/5b0e59b2-8a02-4d63-bf26-b09704ce5d03" width="1480" height="700">
 
-![image](https://github.com/AIS8-WWCD/streamlit_dashboard/assets/124236172/ffb04403-e425-407c-9df7-c6b15f8339f8)
+
